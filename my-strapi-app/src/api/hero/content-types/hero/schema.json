@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "heroes",
+  "info": {
+    "singularName": "hero",
+    "pluralName": "heroes",
+    "displayName": "hero",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "awakened": {
+      "type": "boolean"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "fraction": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::fraction.fraction",
+      "inversedBy": "heroes"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Strength",
+        "Intelligence",
+        "Agility"
+      ]
+    },
+    "class": {
+      "type": "enumeration",
+      "enum": [
+        "Warrior",
+        "Mage",
+        "Ranger",
+        "Tank",
+        "Support"
+      ]
+    }
+  }
+}

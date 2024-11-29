@@ -1,0 +1,47 @@
+<div class="container">
+
+    <div class="filter">
+        <form [formGroup]="filterForm">
+            <input formControlName="name" placeholder="Имя героя" />
+        </form>
+
+        <div class="buttons">
+            <div class="button-group">
+                <div class="button-container">
+                    <button *ngFor="let heroClass of classes" (click)="setClassFilter(heroClass)" [class.selected]="filterForm.value.class == heroClass">
+                        <img src="assets/img/{{ heroClass }}.webp" alt="{{ heroClass }}" />
+                    </button>
+                </div>
+            </div>
+    
+            <div class="button-group">
+                <div class="button-container">
+                    <button *ngFor="let heroType of types" (click)="setTypeFilter(heroType)" [class.selected]="filterForm.value.type == heroType">
+                        <img src="assets/img/{{ heroType }}.webp" alt="{{ heroType }}" />
+                    </button>
+                </div>
+            </div>
+    
+            <div class="button-group">
+                <div class="button-container">
+                    <button *ngFor="let fraction of fractions" (click)="setFractionFilter(fraction)" [class.selected]="filterForm.value.fraction == fraction">
+                        <img src="assets/img/{{ fraction }}.webp" alt="{{ fraction }}" />
+                    </button>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+    <div class="heroes-container">
+        <div class="hero" *ngFor="let hero of filteredHeroes">
+            <img src="{{ baseUrl + hero?.icon?.url }}" alt="">
+            <span class="tooltip">
+                <h3>{{ hero.name }}</h3>
+                <p>Class: {{ hero.class }}</p>
+                <p>Type: {{ hero.type }}</p>
+                <p>Fraction: {{ hero.fraction?.name }}</p>
+            </span>
+        </div>
+    </div>   
+</div>

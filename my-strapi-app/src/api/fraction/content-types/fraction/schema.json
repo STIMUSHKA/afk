@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fractions",
+  "info": {
+    "singularName": "fraction",
+    "pluralName": "fractions",
+    "displayName": "Fraction",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "heroes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::hero.hero",
+      "mappedBy": "fraction"
+    }
+  }
+}

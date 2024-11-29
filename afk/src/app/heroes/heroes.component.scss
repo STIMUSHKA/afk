@@ -1,0 +1,88 @@
+.container {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin: auto;
+    margin-top: 70px;
+
+    .filter {
+        margin-bottom: 20px; /* Отступ снизу для формы фильтрации */
+        width: 1200px;
+        .buttons {
+            .button-group {
+                .button-container {
+                  display: flex;
+                  flex-wrap: wrap;
+                }
+      
+                button {
+                  background-color: transparent;
+                  border: none;
+                  cursor: pointer;
+                  margin: 0px;
+                  padding: 5px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  display: inline-block;
+      
+                  &.selected {
+                    transform: scale(1.2); /* Увеличиваем изображение на 10% */
+                  }
+                }
+                
+                button img {
+                  width: 30px;
+                  height: 30px;
+                }
+                
+                button:hover {
+                  opacity: 0.8; /* Эффект при наведении */
+                }
+              }
+        }
+
+    }
+
+    .heroes-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-bottom: 10px ;
+        .hero {
+            position: relative; /* Устанавливаем относительное позиционирование для родителя */
+            height: 100px;
+        
+            img {
+                height: 100px;
+                width: 100px;
+                transition: transform 0.3s ease; /* Плавный переход для трансформации */
+            }
+        
+            /* Эффект увеличения при наведении */
+            img:hover {
+                transform: scale(1.1); /* Увеличиваем изображение на 10% */
+            }
+
+            &:hover .tooltip {
+                display: block; /* Показываем тултип при наведении на родителя */
+            }
+
+            .tooltip {
+                display: none; /* Скрываем тултип по умолчанию */
+                position: absolute; /* Абсолютное позиционирование для тултипа */
+                bottom: 110%; /* Позиционируем тултип над изображением */
+                left: 50%; /* Центрируем тултип */
+                transform: translateX(-50%); /* Центрируем тултип */
+                background-color: rgba(0, 0, 0, 0.9); /* Полупрозрачный фон */
+                color: white; /* Цвет текста */
+                padding: 5px; /* Отступы внутри тултипа */
+                border-radius: 5px; /* Закругленные углы */
+                white-space: nowrap; /* Запрет на перенос текста */
+                z-index: 10; /* Убедитесь, что тултип выше других элементов */
+            }
+        }
+    }
+}

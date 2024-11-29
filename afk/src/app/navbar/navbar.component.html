@@ -1,0 +1,16 @@
+<nav class="navbar">
+    <div class="navbar-container">
+      <div class="menu-items">
+          <button (click)="navigateToHome()">Главная</button>
+          <button (click)="navigateToHeroes()">Герои</button>
+          <button (click)="navigateToPacks()">Мои построения</button>
+          <button (click)="navigateToMyHeroes()">Мои герои</button>
+      </div>
+      
+      <div class="menu-items">
+        <button (click)="navigateToProfile()">Профиль</button>
+        <button *ngIf="loggedIn" (click)="logout()">Выйти</button>
+      </div>
+    </div>
+  </nav>
+  

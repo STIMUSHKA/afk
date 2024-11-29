@@ -1,0 +1,51 @@
+body {
+  &::-webkit-scrollbar {
+    width: 0px; /* Ширина скроллбара */
+  }
+} 
+
+  
+  .form-container {
+    background-color: white; /* Цвет фона формы */
+    border: 2px solid black; /* Черная рамка */
+    border-radius: 8px; /* Закругленные углы */
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для формы */
+    width: 300px; /* Ширина формы */
+  }
+  
+  h2 {
+    text-align: center; /* Центрирование заголовка */
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение элементов формы */
+  }
+  
+  label {
+    margin-bottom: 5px; /* Отступ между меткой и полем ввода */
+    display: block;
+  }
+  
+  input {
+    margin-bottom: 15px; /* Отступ между полями ввода */
+    padding: 10px; /* Внутренний отступ */
+    border: 1px solid #ccc; /* Цвет рамки */
+    border-radius: 4px; /* Закругленные углы */
+    width: calc(100% - 20px);
+  }
+  
+  button {
+    padding: 10px; /* Внутренний отступ кнопки */
+    background-color: black; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убираем рамку */
+    border-radius: 4px; /* Закругленные углы кнопки */
+    cursor: pointer; /* Указатель при наведении */
+  }
+  
+  button:hover {
+    background-color: #444; /* Цвет фона кнопки при наведении */
+  }
+  
