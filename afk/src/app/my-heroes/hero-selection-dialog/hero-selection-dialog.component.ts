@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input'; // Для полей �
 import { MatSelectModule } from '@angular/material/select'; // Для <mat-select> и <mat-option>
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { API_BASE_URL } from '../../shared/constants';
 @Component({
   selector: 'app-hero-selection-dialog',
   templateUrl: './hero-selection-dialog.component.html',
@@ -16,7 +17,7 @@ import { FormsModule } from '@angular/forms';
   imports: [HeroesComponent, MatStepperModule, CommonModule, MatDialogContent, MatButtonModule, FormsModule, MatInputModule ],
 })
 export class HeroSelectionDialogComponent {
-  baseUrl: string = 'http://localhost:1337';
+  baseUrl: string = API_BASE_URL;
   selectedHero: any; // Переменная для хранения выбранного героя
   heroAttributes: any = {
     rarity: 'Elite',

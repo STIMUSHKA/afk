@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, tap } from 'rxjs';
+import { API_BASE_URL } from '../shared/constants';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  private apiUrl = 'http://localhost:1337/api'; // URL вашего Strapi сервера
+  private apiUrl = `${API_BASE_URL}/api`; // URL вашего Strapi сервера
   private token: string = '';
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   private user: any = null; // Хранение информации о пользователе

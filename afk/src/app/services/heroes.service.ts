@@ -3,13 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Hero, HeroList, UserHero, UserHeroList } from '../models/hero.model';
 import { map, tap } from 'rxjs/operators';
+import { API_BASE_URL } from '../shared/constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
-  private apiUrl = 'http://localhost:1337/api/heroes';
-  private userHeroApiUrl = 'http://localhost:1337/api/user-heroes';  
+  private url = API_BASE_URL
+  private heroApi = `${this.url}/api/heroes`;
+  private userHeroApiUrl = `${this.url}/api/user-heroes`;  
   private heroesKey = 'heroes';
   private lastFetchKey = 'lastFetch';
   private heroList: HeroList;
@@ -37,7 +39,7 @@ export class HeroService {
   
   //   // Проверяем, нужно ли обновлять данные
   //   if (!lastFetch || now - Number(lastFetch) > 24 * 60 * 60 * 1000) {
-  //     return this.http.get<Hero[]>(this.apiUrl).pipe(
+  //     return this.http.get<Hero[]>(this.heroApi).pipe(
   //       map(heroesData => new HeroList(heroesData.map(heroData => new Hero(heroData)))), // Преобразуем в HeroList
   //       tap(heroList => {
   //         localStorage.setItem(this.heroesKey, JSON.stringify(heroList.getHeroes()));
@@ -61,7 +63,7 @@ export class HeroService {
   
     // Проверяем, нужно ли обновлять данные
     if (!lastFetch || now - Number(lastFetch) > 24 * 60 * 60 * 1000) {
-      this.http.get<Hero[]>(this.apiUrl).pipe(
+      this.http.get<Hero[]>(this.heroApi).pipe(
         map(heroesData => {
           const heroList = new HeroList(heroesData.map(heroData => new Hero(heroData)));
           // Сохраняем данные о героях в локальное хранилище
@@ -156,7 +158,6 @@ export class HeroService {
 
 
   public createUserHero(hero: UserHero) {
-    const api_url = 'http://localhost:1337/api/user-heroes';
     const data = {
       hero:  hero.hero.id,
       engraving: '' + hero.engraving,
@@ -169,6 +170,6 @@ export class HeroService {
       'Authorization': `Bearer ${token}` // Добавляем токен в заголовок
     });
 
-    return this.http.post<Hero>(api_url, { data }, { headers });
+    return this.http.post<Hero>(this.userHeroApiUrl, { data }, { headers });
   }
 }

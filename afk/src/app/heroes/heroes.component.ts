@@ -3,6 +3,7 @@ import { Hero, HeroList, UserHero, UserHeroList } from '../models/hero.model';
 import { HeroService } from '../services/heroes.service';
 import { CommonModule } from '@angular/common'; 
 import { FormGroup, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { API_BASE_URL } from '../shared/constants';
 @Component({
   selector: 'app-heroes',
   imports: [CommonModule, ReactiveFormsModule],
@@ -19,7 +20,7 @@ export class HeroesComponent {
   public filteredHeroes: Hero[] = [];
   public filteredUserHeroes:  UserHero[] = [];
   public filterForm: FormGroup;
-  public baseUrl: string = 'http://localhost:1337'
+  public baseUrl: string = API_BASE_URL
 
   public classes: string[] = [];
   public types: string[] = [];
