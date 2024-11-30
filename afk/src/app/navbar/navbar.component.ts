@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/heroes'])
   }
   navigateToPacks() {
-    this.router.navigate(['/packs'])
+    this.router.navigate(['/my-formations'])
   }
   navigateToMyHeroes() {
     this.router.navigate(['/my-heroes'])
