@@ -158,10 +158,10 @@ export class HeroService {
   public createUserHero(hero: UserHero) {
     const api_url = 'http://localhost:1337/api/user-heroes';
     const data = {
-      hero: hero.hero.id,
-      engraving: hero.engraving,
-      furniture: hero.furniture,
-      signature_item: hero.signature_item,
+      hero:  hero.hero.id,
+      engraving: '' + hero.engraving,
+      furniture: '' + hero.furniture,
+      signature_item: '' + hero.signature_item,
       rarity: hero.rarity,
     }
     const token = localStorage.getItem('token');

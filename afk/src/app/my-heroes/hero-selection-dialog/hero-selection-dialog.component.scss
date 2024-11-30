@@ -11,6 +11,16 @@
     background-color: #FFFFFF;
 }
 
+::ng-deep .mat-step-text-label, .mat-step-icon-content {
+    color: black;
+    font-weight: 500;
+}
+
+::ng-deep .mat-step-icon-content {
+    color: black;
+    font-weight: 600;
+}
+
 .container {
     .second-step-container {
         display: flex;
@@ -59,7 +69,7 @@
 
     }
     .controll-buttons {
-        margin-top: 30px;
+        margin-top: 290px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;

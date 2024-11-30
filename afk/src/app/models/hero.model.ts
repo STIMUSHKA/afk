@@ -135,6 +135,18 @@ export class UserHero {
     return result;
   }
 
+  public getHeroEngraving(): string {
+    if (this.engraving < 30) {
+      return 'yellow'
+    } else if ( this.engraving >= 30 && this.engraving < 60) {
+      return 'orange'
+    } else if ( this.engraving >= 60 && this.engraving < 80) {
+      return 'red'
+    } else {
+      return 'white'
+    }
+  }
+
   public getStars(): number {
     if (/\d+/.test(this.rarity)) {
       const numMatch = this.rarity.match(/\d+/);  // Ищем число

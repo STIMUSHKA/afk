@@ -33,7 +33,7 @@ export class MyHeroesComponent {
   openHeroSelectionDialog(): void {
     const dialogRef = this.dialog.open(HeroSelectionDialogComponent, {
       height: '800px',
-      width: '1000px',
+      width: '920px',
       panelClass: 'mama'
     });
 

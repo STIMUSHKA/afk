@@ -46,10 +46,11 @@
     </div>
     <div *ngIf="userMode && obtainedHeroes" class="heroes-container">
         <div class="hero {{hero.getRarity()}}" *ngFor="let hero of filteredUserHeroes" (click)="selectHero(hero)">
-            <img src="{{ baseUrl + hero.hero.icon.url }}" alt="">
+            <img src="{{ baseUrl + hero.hero.icon.url }}" alt="" class="hero-img">
             <div class="star-strip" *ngIf="hero.getStars() > 0">
-                <span *ngFor="let star of [].constructor(hero.getStars())" class="star"> ★</span>
-              </div>
+                <span *ngFor="let star of [].constructor(hero.getStars())" class="star {{hero.getHeroEngraving()}}"> ★</span>
+            </div>
+            <img class="fraction" src="assets/img/{{ hero.hero.fraction.name }}.webp" alt="">
             <span class="tooltip">
                 <h3>{{ hero.hero.name }}</h3>
                 <p>Class: {{ hero.hero.class }}</p>
