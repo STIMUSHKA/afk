@@ -1,7 +1,7 @@
 <div class="container">
 
     <div class="filter">
-        <form [formGroup]="filterForm">
+        <form *ngIf="search" [formGroup]="filterForm">
             <input formControlName="name" placeholder="Имя героя" />
         </form>
 
@@ -33,15 +33,26 @@
        
     </div>
 
-    <div class="heroes-container">
-        <div class="hero" *ngFor="let hero of filteredHeroes">
-            <img src="{{ baseUrl + hero?.icon?.url }}" alt="">
+    <div *ngIf="!userMode || userMode && !obtainedHeroes" class="heroes-container">
+        <div class="hero" *ngFor="let hero of filteredHeroes" (click)="selectHero(hero)">
+            <img src="{{ baseUrl + hero?.iconUrl }}" alt="">
             <span class="tooltip">
                 <h3>{{ hero.name }}</h3>
                 <p>Class: {{ hero.class }}</p>
                 <p>Type: {{ hero.type }}</p>
-                <p>Fraction: {{ hero.fraction?.name }}</p>
+                <p>Fraction: {{ hero.fraction.name }}</p>
             </span>
         </div>
-    </div>   
+    </div>
+    <div *ngIf="userMode && obtainedHeroes" class="heroes-container">
+        <div class="hero" *ngFor="let hero of filteredUserHeroes" (click)="selectHero(hero)">
+            <img src="{{ baseUrl + hero.hero.icon.url }}" alt="">
+            <span class="tooltip">
+                <h3>{{ hero.hero.name }}</h3>
+                <p>Class: {{ hero.hero.class }}</p>
+                <p>Type: {{ hero.hero.type }}</p>
+                <p>Fraction: {{ hero.hero.fraction.name }}</p>
+            </span>
+        </div>
+    </div>
 </div>

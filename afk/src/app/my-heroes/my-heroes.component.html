@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="buttons-container">
+        <button class="primary-button" mat-button (click)="openHeroSelectionDialog()">Add hero</button>
+    </div>
+    <h2>My heroes</h2>
+    <app-heroes [search]="false" [userMode]="true" [obtainedHeroes]="true" (heroSelected)="onHeroSelected($event)"></app-heroes>
+</div>

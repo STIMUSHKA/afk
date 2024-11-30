@@ -1,8 +1,25 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0; /* Цвет фона */
+.container {
+  // width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: auto;
+  background-color: #f0f0f0; /* Цвет фона */
+
+  .form-container {
+    background-color: white; /* Цвет фона формы */
+    border: 2px solid black; /* Черная рамка */
+    border-radius: 8px; /* Закругленные углы */
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для формы */
+    width: 300px; /* Ширина формы */
+
+    a {
+      text-decoration: none;
+      color: rgba(0, 80, 201, 0.753);
+      font-weight: 500;
+      cursor:pointer
+    } 
   }
+}

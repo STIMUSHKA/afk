@@ -1,6 +1,10 @@
-<h2>Личный кабинет</h2>
-<div>
-  <p>Имя пользователя: {{ user.username }}</p>
-  <p>Email: {{ user.email }}</p>
-  <button (click)="logout()">Выйти</button>
+<div class="container">
+  <div class="profile-container">
+    <h2>Profile</h2>
+    <div>
+      <p>Username: {{ user?.username }}</p>
+      <p>Email: {{ user?.email }}</p>
+      <button class="main-button" (click)="logout()">Выйти</button>
+    </div>
+  </div>
 </div>

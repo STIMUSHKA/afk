@@ -6,7 +6,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  imports: [FormsModule] 
+  imports: [FormsModule],
+  styleUrls: ['./register.component.scss'],
+  
 })
 export class RegisterComponent {
   user = { username: '', email: '', password: '' };

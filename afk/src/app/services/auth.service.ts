@@ -6,6 +6,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   private apiUrl = 'http://localhost:1337/api'; // URL вашего Strapi сервера
   private token: string = '';
@@ -16,6 +17,25 @@ export class AuthService {
     // Проверяем наличие токена в localStorage при инициализации сервиса
     this.token = localStorage.getItem('token') || '';
     this.isLoggedInSubject.next(!!this.token);
+
+    // Если токен существует, получаем информацию о пользователе
+    if (this.token) {
+      this.fetchUser();
+    }
+  }
+
+  // Метод для получения информации о пользователе
+  fetchUser() {
+    return this.http.get(`${this.apiUrl}/users/me`, {
+      headers: {
+        Authorization: `Bearer ${this.token}`
+      }
+    }).pipe(
+      tap((response: any) => {
+        this.user = response; // Сохраняем информацию о пользователе
+        this.isLoggedInSubject.next(true);
+      })
+    );
   }
 
   // Метод для регистрации пользователя
@@ -27,7 +47,7 @@ export class AuthService {
         localStorage.setItem('token', this.token);
         this.isLoggedInSubject.next(true);
       })
-    )
+    );
   }
 
   // Метод для логина пользователя
@@ -71,3 +91,4 @@ export class AuthService {
     return this.token;
   }
 }
+

@@ -1,15 +1,16 @@
-<div class="form-container">
-    <h2>Вход</h2>
+<div class="container">
+  <div class="form-container">
+    <h2>Login</h2>
     <form (ngSubmit)="login()">
       <div>
-        <label for="identifier">Email или имя пользователя:</label>
+        <label for="identifier">Email or username:</label>
         <input type="text" id="identifier" [(ngModel)]="user.identifier" name="identifier" required>
       </div>
       <div>
-        <label for="password">Пароль:</label>
+        <label for="password">Password:</label>
         <input type="password" id="password" [(ngModel)]="user.password" name="password" required>
       </div>
-      <button type="submit">Войти</button>
+      <button class="main-button" type="submit">Войти</button>
     </form>
   </div>
-  
+</div>

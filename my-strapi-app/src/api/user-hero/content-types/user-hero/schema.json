@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_heroes",
+  "info": {
+    "singularName": "user-hero",
+    "pluralName": "user-heroes",
+    "displayName": "user-hero",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "signature_item": {
+      "type": "integer"
+    },
+    "furniture": {
+      "type": "integer"
+    },
+    "engraving": {
+      "type": "integer"
+    },
+    "rarity": {
+      "type": "enumeration",
+      "enum": [
+        "Elite",
+        "Elite_plus",
+        "Legendary",
+        "Legendary_plus",
+        "Mythic",
+        "Mythic_plus",
+        "Ascended",
+        "Ascended_1*",
+        "Ascended_2*",
+        "Ascended_3*",
+        "Ascended_4*",
+        "Ascended_5*"
+      ]
+    },
+    "hero": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero.hero"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user_heroes"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Choose hero</h2>
+
+<mat-dialog-content>
+    <div class="container">
+        <mat-horizontal-stepper #stepper>
+          <mat-step label="Hero selection">
+            <app-heroes [search]="true" [userMode]="true" [obtainedHeroes]="false" (heroSelected)="onHeroSelected($event)"></app-heroes>
+          </mat-step>
+          <mat-step label="Select stats">
+            <div class="second-step-container" *ngIf="selectedHero">
+              <div>
+                <h3>{{ selectedHero.hero.name }}</h3>
+                <img class="hero-icon" src="{{ baseUrl + selectedHero.hero.icon.url }}" alt="">
+                <div class="img-container">
+                  <img src="assets/img/{{selectedHero.hero.class}}.webp" alt="">
+                  <img src="assets/img/{{selectedHero.hero.type}}.webp" alt="">
+                  <img src="assets/img/{{selectedHero.hero.fraction.name }}.webp" alt="">
+                </div> 
+              </div>
+              <div class="selectors">
+                <mat-label>Select rarity</mat-label>
+                <select [(ngModel)]="heroAttributes.rarity">
+                  <option *ngFor="let r of rarity" [value]="r">{{ r }}</option>
+                </select>
+              
+                <mat-label>Select engraving</mat-label>
+                <select [(ngModel)]="heroAttributes.engraving">
+                  <option *ngFor="let e of engraving" [value]="e">{{ e }}</option>
+                </select>
+              
+                <mat-label>Select Signature Item</mat-label>
+                <select [(ngModel)]="heroAttributes.signature_item">
+                  <option *ngFor="let si of signature_item" [value]="si">{{ si }}</option>
+                </select>
+              
+                <mat-label>Select Furniture</mat-label>
+                <select [(ngModel)]="heroAttributes.furniture">
+                  <option *ngFor="let f of furniture" [value]="f">{{ f }}</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="controll-buttons">
+              <button class="main-button" matStepperPrevious>Back</button>
+              <button class="main-button" (click)="onClose()">Add</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</mat-dialog-content>

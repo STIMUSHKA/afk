@@ -432,6 +432,58 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiUserHeroUserHero extends Struct.CollectionTypeSchema {
+  collectionName: 'user_heroes';
+  info: {
+    description: '';
+    displayName: 'user-hero';
+    pluralName: 'user-heroes';
+    singularName: 'user-hero';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    engraving: Schema.Attribute.Integer;
+    furniture: Schema.Attribute.Integer;
+    hero: Schema.Attribute.Relation<'oneToOne', 'api::hero.hero'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-hero.user-hero'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    rarity: Schema.Attribute.Enumeration<
+      [
+        'Elite',
+        'Elite_plus',
+        'Legendary',
+        'Legendary_plus',
+        'Mythic',
+        'Mythic_plus',
+        'Ascended',
+        'Ascended_1*',
+        'Ascended_2*',
+        'Ascended_3*',
+        'Ascended_4*',
+        'Ascended_5*',
+      ]
+    >;
+    signature_item: Schema.Attribute.Integer;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    users_permissions_user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -922,6 +974,10 @@ export interface PluginUsersPermissionsUser
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    user_heroes: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-hero.user-hero'
+    >;
     username: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -943,6 +999,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::fraction.fraction': ApiFractionFraction;
       'api::hero.hero': ApiHeroHero;
+      'api::user-hero.user-hero': ApiUserHeroUserHero;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
