@@ -124,6 +124,29 @@ export class UserHero {
     return this.hero;
   }
 
+  public getRarity(): string {
+    // Преобразуем название в более удобный формат
+    let rarityName = this.rarity.split('_')[0].toLowerCase();  // "Elite", "Ascended", и т.д.
+    let plus = this.rarity.includes('plus') ? 'plus' : ''; // Проверяем, есть ли "plus"
+    
+
+    // Собираем финальный результат
+    let result = `${rarityName} ${plus}`.trim();  // Собираем результат, удаляя лишние пробелы
+    return result;
+  }
+
+  public getStars(): number {
+    if (/\d+/.test(this.rarity)) {
+      const numMatch = this.rarity.match(/\d+/);  // Ищем число
+      if (numMatch) {
+        console.log(numMatch)
+        const num = parseInt(numMatch[0]);
+        return num;
+      }
+    }
+    return 0;
+  }
+
   public getInfo(): string {
     return `${this.hero.name} (ID: ${this.id}) - Rarity: ${this.rarity}, Engraving: ${this.engraving}`;
   }

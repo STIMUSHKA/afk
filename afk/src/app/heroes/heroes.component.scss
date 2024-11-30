@@ -48,40 +48,122 @@
     .heroes-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      padding-bottom: 10px ;
+      gap: 15px;
+      padding-bottom: 10px;
+    
       .hero {
-        position: relative; /* Устанавливаем относительное позиционирование для родителя */
+        position: relative; /* Для отображения тултипа */
         height: 100px;
-      
+        margin-bottom: 5px;
+    
         img {
           height: 100px;
           width: 100px;
-          transition: transform 0.3s ease; /* Плавный переход для трансформации */
+          border-radius: 10px 0px 10px 0px; /* Для круглой рамки */
+          border: 3px solid transparent; /* Базовая рамка */
+          transition: transform 0.3s ease, border-color 0.3s ease; /* Плавные эффекты */
+        }
+
+        .star-strip {
+          z-index: 2;
+          position: absolute;
+          bottom: -3px; /* Располагаем полоску внизу */
+          left: 3px;
+          width: 94%;
+          height: 20px; /* Высота полоски */
+          background: linear-gradient(90deg, #00000080, #00000080); /* Золотой градиент */
+          display: flex;
+          justify-content: center; /* Центрируем звезду по горизонтали */
+          align-items: center; /* Центрируем звезду по вертикали */
+          border-bottom-right-radius: 10px;
         }
       
+        .star {
+          font-size: 14px; /* Размер звезды */
+          color: #ffffff; /* Белая звезда */
+          text-shadow: 0 0 5px #ffd700; /* Лёгкое свечение */
+        }
+    
+
+      
+        /* Эффект увеличения при наведении */
+        &:hover {
+          transform: scale(1.1); /* Увеличиваем изображение */
+        }
+      
+        &:hover::before, &:hover::after {
+          background: linear-gradient(45deg, #ffd700, #ffec8b); /* Более яркий градиент при наведении */
+        }
+    
+        &.elite img {
+          border-color: #a75ff5; /* Фиолетовая рамка */
+          box-shadow: 0 0 5px #a75ff5; /* Свечение */
+        }
+    
+        &.legendary img {
+          border-color: #f5a623; /* Оранжевая рамка */
+          box-shadow: 0 0 5px #f5a623; /* Свечение */
+        }
+    
+        &.mythic img {
+          border-color: #ac2929; /* Белая рамка */
+          box-shadow: 0 0 5px #7a1818; /* Золотое свечение */
+        }
+
+        &.ascended img {
+          border-color: #ffffff; /* Белая рамка */
+          box-shadow: 0 0 5px #5a5a5a; /* Золотое свечение */
+        }
+    
         /* Эффект увеличения при наведении */
         img:hover {
-          transform: scale(1.1); /* Увеличиваем изображение на 10% */
+          transform: scale(1); /* Увеличение */
         }
-
+    
         &:hover .tooltip {
-          display: block; /* Показываем тултип при наведении на родителя */
+          display: block; /* Показываем тултип */
         }
-
+    
         .tooltip {
           display: none; /* Скрываем тултип по умолчанию */
-          position: absolute; /* Абсолютное позиционирование для тултипа */
-          bottom: 110%; /* Позиционируем тултип над изображением */
-          left: 50%; /* Центрируем тултип */
-          transform: translateX(-50%); /* Центрируем тултип */
-          background-color: rgba(0, 0, 0, 0.9); /* Полупрозрачный фон */
-          color: white; /* Цвет текста */
-          padding: 5px; /* Отступы внутри тултипа */
-          border-radius: 5px; /* Закругленные углы */
-          white-space: nowrap; /* Запрет на перенос текста */
-          z-index: 1; /* Убедитесь, что тултип выше других элементов */
+          position: absolute;
+          bottom: 110%;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: rgba(0, 0, 0, 0.9);
+          color: white;
+          padding: 5px;
+          border-radius: 5px;
+          white-space: nowrap;
+          z-index: 5;
+        }
+      }
+
+      .plus {
+        &::before, &::after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          z-index: 4; /* Поверх картинки */
+        }
+
+        /* Добавляем стили для разных уровней */
+        &::before {
+          top: 0px; /* Слегка за границу */
+          right: 0px; /* Слегка за границу */
+          border-width: 0px 20px 20px 0px; /* Размер треугольника */
+          border-color:  transparent #e9c601 transparent transparent; /* Золотой верх */
+        }
+      
+        &::after {
+          bottom: -6px; /* Слегка за границу */
+          left: 0px; /* Слегка за границу */
+          border-width: 0px 20px 20px 0px; /* Размер треугольника */
+          border-color: transparent transparent #e9c601 transparent ; /* Золотой низ */
         }
       }
     }
+    
 }

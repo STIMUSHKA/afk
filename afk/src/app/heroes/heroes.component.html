@@ -45,8 +45,11 @@
         </div>
     </div>
     <div *ngIf="userMode && obtainedHeroes" class="heroes-container">
-        <div class="hero" *ngFor="let hero of filteredUserHeroes" (click)="selectHero(hero)">
+        <div class="hero {{hero.getRarity()}}" *ngFor="let hero of filteredUserHeroes" (click)="selectHero(hero)">
             <img src="{{ baseUrl + hero.hero.icon.url }}" alt="">
+            <div class="star-strip" *ngIf="hero.getStars() > 0">
+                <span *ngFor="let star of [].constructor(hero.getStars())" class="star"> ★</span>
+              </div>
             <span class="tooltip">
                 <h3>{{ hero.hero.name }}</h3>
                 <p>Class: {{ hero.hero.class }}</p>
