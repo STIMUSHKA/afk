@@ -2,7 +2,7 @@
 
 .container {
     display: flex;
-    width: 1200px;
+    width: 60vw;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -15,5 +15,16 @@
         flex-direction: row;
         justify-content: start;
         align-items: center;
+    }
+
+    .heroes-main {
+        min-width: 100%;
+    }
+
+}
+
+@media (width < 1000px) {
+    .container {
+        width: 95vw;
     }
 }
