@@ -12,6 +12,7 @@ export class AuthService {
   private apiUrl = `${API_BASE_URL}/api`; // URL вашего Strapi сервера
   private token: string = '';
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  public userSubject = new BehaviorSubject<any>(null);
   private user: any = null; // Хранение информации о пользователе
 
   constructor(private http: HttpClient, private router: Router) {
@@ -34,7 +35,8 @@ export class AuthService {
     }).pipe(
       tap((response: any) => {
         this.user = response; // Сохраняем информацию о пользователе
-        this.isLoggedInSubject.next(true);
+        this.userSubject.next(response);
+        // this.isLoggedInSubject.next(true);
       })
     );
   }

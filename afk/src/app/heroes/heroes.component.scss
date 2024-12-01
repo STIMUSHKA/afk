@@ -29,12 +29,16 @@
     
             &.selected {
               transform: scale(1.2); /* Увеличиваем изображение на 10% */
+              img {
+                filter: saturate(2);
+              }
             }
           }
           
           button img {
             width: 30px;
             height: 30px;
+            filter: saturate(90%);
           }
           
           button:hover {
@@ -188,4 +192,17 @@
       }
     }
     
+}
+
+@media (width < 670px) {
+  .container {
+    .button-container img {
+      width: 40px !important;
+      height: 40px !important;
+    }
+
+    .heroes-container {
+      justify-content: center;
+    }
+  }
 }

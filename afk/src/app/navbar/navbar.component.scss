@@ -4,28 +4,90 @@
     position: sticky; /* Фиксированное позиционирование */
     top: 0; /* Привязка к верхней части страницы */
     left: 0; /* Привязка к левой части страницы */
-    width: 100%; /* Занимает всю ширину экрана */
-    z-index: 2; /* Убедитесь, что навбар выше других элементов */
+    z-index: 11; /* Убедитесь, что навбар выше других элементов */
+    .navbar-container {
+        display: flex;
+        justify-content: space-between; /* Распределение кнопок */
+        width: 60vw;
+        margin: 0 auto;
+        .menu-items {
+            display: flex;
+            gap: 10px;
+            button {
+                background-color: #444; /* Цвет фона кнопок */
+                color: white; /* Цвет текста кнопок */
+                border: none; /* Убираем рамку */
+                border-radius: 4px; /* Закругленные углы */
+                padding: 10px 15px; /* Внутренние отступы */
+                cursor: pointer; /* Указатель при наведении */
+            }
+            .username-button {
+                background-color: transparent;
+                font-weight: 700;
+                &::before {
+                    font-weight: normal;
+                    content: "Welcome, ";
+                }
+                &:active, &:hover {
+                    background-color: transparent;
+                }
+            }
+            button:hover {
+                background-color: #555; /* Цвет фона кнопок при наведении */
+            }
+        }
+    }
+    
+    
 }
 
-.navbar-container {
-    display: flex;
-    justify-content: space-around; /* Распределение кнопок */
-    .menu-items {
-        display: flex;
-        gap: 10px;
+.mobile {
+    display: none;
+}
+
+.sidebar {
+    position: fixed;
+    top: 56px;
+    left: -100%;
+    z-index: 10;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    height: 100dvh;
+    background-color: #1e1e1e;
+    transition: .3s;
+    button {
+        height: 50px;
+        text-align: start;
+        border: none;
+        background-color: transparent;
+        color: #ddd;
+        &:hover {
+            background-color: #2e2e2e;
+        }
+        // Separators between buttons
+        &:not(:last-of-type) {
+            border-bottom: 1px solid #aaa;
+        }
     }
 }
 
-button {
-    background-color: #444; /* Цвет фона кнопок */
-    color: white; /* Цвет текста кнопок */
-    border: none; /* Убираем рамку */
-    border-radius: 4px; /* Закругленные углы */
-    padding: 10px 15px; /* Внутренние отступы */
-    cursor: pointer; /* Указатель при наведении */
+@media (width < 1000px) {
+    .navbar {
+        .navbar-container {
+            width: 100%;
+        }
+    }
 }
 
-button:hover {
-    background-color: #555; /* Цвет фона кнопок при наведении */
+@media (width < 670px) {
+    .mobile {
+        display: block;
+    }
+    .desktop {
+        display: none;
+    }
+    .sidebar {
+        display: flex;
+    }
 }

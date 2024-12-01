@@ -1,15 +1,35 @@
-<nav class="navbar">
-    <div class="navbar-container">
-      <div class="menu-items">
-          <button (click)="navigateToHome()">Main</button>
-          <button (click)="navigateToHeroes()">Heroes</button>
-          <button (click)="navigateToPacks()">My formations</button>
-          <button (click)="navigateToMyHeroes()">My heroes</button>
-      </div>
-      
-      <div class="menu-items">
-        <button (click)="navigateToProfile()">Profile</button>
-        <button *ngIf="loggedIn" (click)="logout()">Log out</button>
-      </div>
+<nav class="navbar desktop">
+  <div class="navbar-container">
+    <div class="menu-items">
+      <button (click)="navigateToHome()">main</button>
+      <button (click)="navigateToHeroes()">heroes</button>
+      <button (click)="navigateToPacks()">my formations</button>
+      <button (click)="navigateToMyHeroes()">my heroes</button>
     </div>
-  </nav>
+    <div class="menu-items">
+      <button class="username-button" (click)="navigateToProfile()">{{userName}}</button>
+      <button *ngIf="loggedIn" (click)="logout()">Log out</button>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar mobile">
+  <div class="navbar-container">
+    <div class="menu-items">
+      <button class="burger" (click)="toggleBurger()">
+        {{ isSidebarOpen ? '✖' : '☰' }}
+      </button>
+    </div>
+    <div class="menu-items">
+      <button class="username-button" (click)="navigateToProfile()">{{userName}}</button>
+      <button *ngIf="loggedIn" (click)="logout()">Log out</button>
+    </div>
+  </div>
+</nav>
+
+<div class="sidebar" #sidebar id="sidebar">
+      <button (click)="navigateToHome()">main</button>
+      <button (click)="navigateToHeroes()">heroes</button>
+      <button (click)="navigateToPacks()">my formations</button>
+      <button (click)="navigateToMyHeroes()">my heroes</button>
+</div>
