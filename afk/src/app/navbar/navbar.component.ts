@@ -11,12 +11,20 @@ import { CommonModule } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
   public loggedIn: boolean = false;
+  public userName: string = "";
   constructor(private router: Router, private authService: AuthService) {}
   
   ngOnInit(): void {
     this.authService.isLoggedIn().subscribe( isLoggedIn => {
       this.loggedIn = isLoggedIn
     })
+    this.authService.userSubject.subscribe( user => {
+      if (user) {
+        this.userName = user.username
+      }
+    })
+  }
+
   }
 
   navigateToHome() {
