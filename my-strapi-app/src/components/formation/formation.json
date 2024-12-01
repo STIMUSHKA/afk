@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_formation_formations",
+  "info": {
+    "displayName": "formation",
+    "icon": "expand"
+  },
+  "options": {},
+  "attributes": {
+    "firth": {
+      "type": "component",
+      "repeatable": false,
+      "component": "formation.hero-place"
+    },
+    "second": {
+      "type": "component",
+      "repeatable": false,
+      "component": "formation.hero-place"
+    },
+    "third": {
+      "type": "component",
+      "repeatable": false,
+      "component": "formation.hero-place"
+    },
+    "fourth": {
+      "type": "component",
+      "repeatable": false,
+      "component": "formation.hero-place"
+    },
+    "fifth": {
+      "type": "component",
+      "repeatable": false,
+      "component": "formation.hero-place"
+    }
+  }
+}

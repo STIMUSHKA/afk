@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "multiple_formations",
+  "info": {
+    "singularName": "multiple-formation",
+    "pluralName": "multiple-formations",
+    "displayName": "multiple-formation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "multiple_formations"
+    },
+    "single_formation": {
+      "type": "component",
+      "repeatable": true,
+      "component": "formation.formation"
+    }
+  }
+}

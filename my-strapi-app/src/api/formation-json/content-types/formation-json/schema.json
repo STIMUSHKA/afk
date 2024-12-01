@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "formation_jsons",
+  "info": {
+    "singularName": "formation-json",
+    "pluralName": "formation-jsons",
+    "displayName": "formation-json"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "formation_jsons"
+    },
+    "formation": {
+      "type": "json"
+    }
+  }
+}

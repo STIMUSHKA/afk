@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_formation_hero_places",
+  "info": {
+    "displayName": "hero-place"
+  },
+  "options": {},
+  "attributes": {
+    "hero": {
+      "displayName": "hero",
+      "type": "component",
+      "repeatable": true,
+      "component": "formation.hero"
+    }
+  }
+}
