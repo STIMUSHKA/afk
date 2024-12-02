@@ -1,73 +1,118 @@
-.example-list {
-    width: min-content;
-    max-width: 100%;
-    border: solid 1px #ccc;
-    min-height: 60px;
-    display: flex;
-    flex-direction: row;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  .example-box {
-    padding: 0px 0px;
-    border-right: solid 1px #ccc;
-    color: rgba(0, 0, 0, 0.87);
+
+.icon {
+  width: 100px;
+  overflow: hidden;
+}
+.example-box {
+  overflow: hidden;
+}
+.formation-creation {
+  width: 60%;
+  margin: auto;
+  .plus-button {
+    width: 300px;
+    height: 60px;
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    cursor: move;
-    background: white;
-    font-size: 14px;
-    flex-grow: 1;
-    flex-basis: 0;
-    overflow: hidden;
-  }
-  
-  .cdk-drag-preview {
-    box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-                0 8px 10px 1px rgba(0, 0, 0, 0.14),
-                0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  }
-  
-  .cdk-drag-placeholder {
-    opacity: 0;
-  }
-  
-  .cdk-drag-animating {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-  
-  .example-box:last-child {
-    border: none;
-  }
-  
-  .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
+    justify-content: space-around;
 
-.formation-place {
+    &:hover {
+      img {
+        filter: invert(100%);
+      }
+      background-color: black;
+    }
+    img {
+      width: 50px;
+    }
+  }
+
+  .formation {
+    border: solid 1px #ccc;
+    border-radius: 12px;
+    padding: 5px;
+
+    .formation-place {
+      display: flex;
+      flex-direction: row;
+  
+      .plus-button {
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        img {
+            width: 100%;
+        }
+      }
+      .example-list {
+        width: min-content;
+        max-width: 100%;
+        border: solid 1px #ccc;
+        min-height: 60px;
+        display: flex;
+        flex-direction: row;
+        background: white;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      
+      .example-box {
+        padding: 0px 0px;
+        border-right: solid 1px #ccc;
+        color: rgba(0, 0, 0, 0.87);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        cursor: move;
+        background: white;
+        font-size: 14px;
+        flex-grow: 1;
+        flex-basis: 0;
+        overflow: hidden;
+      }
+      .cdk-drag-preview {
+        box-sizing: border-box;
+        border-radius: 4px;
+        box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+      }
+      
+      .cdk-drag-placeholder {
+        opacity: 0;
+      }
+      
+      .cdk-drag-animating {
+        transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+      }
+      
+      .example-box:last-child {
+        border: none;
+      }
+      
+      .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+        transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+      }
+      
+      .no-items {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+      }
+    }
+  }
+
+  .control-buttons {
+    margin-top: 10px;
+    margin-bottom: 100px;
     display: flex;
     flex-direction: row;
-
-    .no-items {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    
-}
-.plus-button {
-    width: 100px;
-    height: 100px;
-    border-radius: 10px;
-    img {
-        width: 100%;
-    }
+    justify-content: space-between;
+    width: 100%;
+  }
 }

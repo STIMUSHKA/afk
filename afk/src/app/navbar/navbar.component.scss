@@ -44,10 +44,6 @@
 
 .no-border {
     border: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
 }
 
 button {
@@ -93,10 +89,13 @@ button {
   display: none;
 }
 
-@media (width > 1000px) {
+@media (width > 670px) {
     button:hover {
         background-color: white; /* Черный фон при наведении */
         color: black; /* Белый текст при наведении */
+    }
+    .sidebar {
+        display: none;
     }
 }
 @media (width < 1000px) {

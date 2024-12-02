@@ -6,45 +6,51 @@ import { API_BASE_URL } from '../shared/constants';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { HeroAddToPartitionDialog } from './hero-add-to-partition-dialog/hero-add-to-partition-dialog.component';
 import { CommonModule } from '@angular/common';
+import { FormationsService } from '../services/formations.service';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-formation-creation',
-  imports: [CdkDropList, CdkDrag, MatDialogModule, CommonModule],
+  imports: [CdkDropList, CdkDrag, MatDialogModule, CommonModule, FormsModule],
   templateUrl: './formation-creation.component.html',
   styleUrl: './formation-creation.component.scss'
 })
-export class FormationCreationComponent implements OnInit {
+export class FormationCreationComponent {
   public baseUrl = API_BASE_URL
-
-  private heroesList: HeroList = new HeroList([]);
-  public formation: Hero[][] = [[],[],[],[],[]]
+  public formationName: string = ''
+  public formations: Hero[][][] = [[[],[],[],[],[]]]
 
   constructor(
-    private heroService: HeroService,
+    private _heroService: HeroService,
     public dialog: MatDialog,
+    private _formationService: FormationsService,
   ) {}  
-  ngOnInit(): void {
-    this.heroService.getHeroes().subscribe(heroesList => {
-      this.heroesList = heroesList;
-      // this.heroes = this.heroesList.getHeroes().slice(1,10);
-    });
-  }
 
-  openHeroSelectionDialog(i: number): void {
-    console.log(i)
+  openHeroSelectionDialog(f: number, p: number): void {
     console.log('openHeroSelectionDialog');
     const dialogRef = this.dialog.open(HeroAddToPartitionDialog, {
       height: '800px',
       width: '920px',
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (!this.formation[i].some(existingResult => existingResult === result)) {
-        this.formation[i].push(result);
+      if (!this.formations[f][p].some(existingResult => existingResult === result)) {
+        this.formations[f][p].push(result);
       }
     });
   }
 
+  addNewFormation(): void {
+    this.formations.push([[],[],[],[],[]])
+  }
 
-  drop(event: CdkDragDrop<string[]>, i: number) {
-    moveItemInArray(this.formation[i], event.previousIndex, event.currentIndex);
+  drop(event: CdkDragDrop<string[]>, f: number, p: number) {
+    moveItemInArray(this.formations[f][p], event.previousIndex, event.currentIndex);
+  }
+
+  createFormation(): void {
+    this._formationService.createFormation(this.formations, this.formationName).subscribe(
+      (response) => {
+        console.log(response);
+      }
+    );
   }
 }

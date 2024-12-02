@@ -373,12 +373,13 @@ export interface ApiFormationJsonFormationJson
   extends Struct.CollectionTypeSchema {
   collectionName: 'formation_jsons';
   info: {
+    description: '';
     displayName: 'formation-json';
     pluralName: 'formation-jsons';
     singularName: 'formation-json';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;

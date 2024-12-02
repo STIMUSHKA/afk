@@ -3,7 +3,8 @@
     <div class="menu-items">
       <button class="no-border" (click)="navigateToHome()">Main</button>
       <button class="no-border" (click)="navigateToHeroes()">Heroes</button>
-      <button class="no-border" (click)="navigateToPacks()">My Formations</button>
+      <button class="no-border" (click)="navigateToMyFormations()">My Formations</button>
+      <button class="no-border" (click)="navigateToFormationCreation()">Create formation</button>
       <button class="no-border" (click)="navigateToMyHeroes()">My Heroes</button>
     </div>
     <div class="menu-items">
@@ -30,6 +31,7 @@
 <div class="sidebar" #sidebar id="sidebar" unselectable="on">
   <button (click)="navigateToHome()">Main</button>
   <button (click)="navigateToHeroes()">Heroes</button>
-  <button (click)="navigateToPacks()">My Formations</button>
+  <button (click)="navigateToMyFormations()">My Formations</button>
+  <button (click)="navigateToFormationCreation()">Create formation</button>
   <button (click)="navigateToMyHeroes()">My Heroes</button>
 </div>

@@ -49,7 +49,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/heroes'])
     this.toggleBurger()
   }
-  navigateToPacks() {
+  navigateToMyFormations() {
     this.router.navigate(['/my-formations'])
     this.toggleBurger()
   }
@@ -59,6 +59,11 @@ export class NavbarComponent implements OnInit {
   }
   navigateToProfile() {
     this.router.navigate(['/profile']); // Перейти на страницу профиля
+    this.toggleBurger()
+  }
+
+  navigateToFormationCreation() {
+    this.router.navigate(['/formation-creation']); // Перейти на страницу профиля
     this.toggleBurger()
   }
 

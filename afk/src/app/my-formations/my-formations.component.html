@@ -1,1 +1,15 @@
-<app-formation-creation></app-formation-creation>
+<div class="container">
+    <div class="formations">
+        <div class="multiple-formation" *ngFor="let formation of myFormations">
+            {{formation.name}}
+            <div class="formation" *ngFor="let brick of formation.formation; let p = index">
+                <div class="formation-line" *ngFor="let place of brick">
+                    @for (hero of place; track hero.id) {
+                      <div class="hero">
+                        <img src="{{ baseUrl + hero.iconUrl }}" alt="" class="icon"></div>
+                      }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
