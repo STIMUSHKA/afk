@@ -28,19 +28,17 @@ export class NavbarComponent implements OnInit {
 
   @ViewChild('sidebar') sidebar!: ElementRef;
   toggleBurger() {
+    this.isSidebarOpen = !this.isSidebarOpen;
     const sidebarElement = this.sidebar.nativeElement;
-    if (document.body.clientWidth < 670) {
+
       if (sidebarElement.style.left === '0px') {
-        sidebarElement.style.left = '-100%'; // Hide sidebar
-        this.isSidebarOpen = false;
+        sidebarElement.style.left = '-102%'; // Hide sidebar
+        sidebarElement.blur();
+        console.log('hi');
       } else {
         sidebarElement.style.left = '0px'; // Show sidebar
-        this.isSidebarOpen = true;
       }
-    } else {
-      sidebarElement.style.left = '-100%';
-      this.isSidebarOpen = false;
-    }
+    
   }
   
   navigateToHome() {
