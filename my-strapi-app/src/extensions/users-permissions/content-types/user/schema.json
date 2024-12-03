@@ -70,6 +70,18 @@
       "relation": "oneToMany",
       "target": "api::user-hero.user-hero",
       "mappedBy": "users_permissions_user"
+    },
+    "multiple_formations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::multiple-formation.multiple-formation",
+      "mappedBy": "users_permissions_user"
+    },
+    "formation_jsons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::formation-json.formation-json",
+      "mappedBy": "users_permissions_user"
     }
   }
 }

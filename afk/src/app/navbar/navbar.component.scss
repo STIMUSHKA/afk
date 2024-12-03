@@ -1,93 +1,116 @@
 .navbar {
-    background-color: #333; /* Цвет фона навбара */
-    padding: 10px; /* Отступы */
-    position: sticky; /* Фиксированное позиционирование */
-    top: 0; /* Привязка к верхней части страницы */
-    left: 0; /* Привязка к левой части страницы */
-    z-index: 11; /* Убедитесь, что навбар выше других элементов */
-    .navbar-container {
-        display: flex;
-        justify-content: space-between; /* Распределение кнопок */
-        width: 60vw;
-        margin: 0 auto;
-        .menu-items {
-            display: flex;
-            gap: 10px;
-            button {
-                background-color: #444; /* Цвет фона кнопок */
-                color: white; /* Цвет текста кнопок */
-                border: none; /* Убираем рамку */
-                border-radius: 4px; /* Закругленные углы */
-                padding: 10px 15px; /* Внутренние отступы */
-                cursor: pointer; /* Указатель при наведении */
-            }
-            .username-button {
-                background-color: transparent;
-                font-weight: 700;
-                &::before {
-                    font-weight: normal;
-                    content: "Welcome, ";
-                }
-                &:active, &:hover {
-                    background-color: transparent;
-                }
-            }
-            button:hover {
-                background-color: #555; /* Цвет фона кнопок при наведении */
-            }
-        }
+    background-color: black; /* Белый фон */
+    border-bottom: 2px solid white; /* Черная рамка снизу */
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    z-index: 15;
+    color: white;
+}
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  width: 60vw;
+  margin: 0 auto;
+
+  .menu-items {
+    display: flex;
+    gap: 10px;
+
+    .burger {
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
     }
-    
-    
+
+    .burger-prikol {
+        background-color: white;
+        color: black;
+    }
+
+    .username-button {
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+    }
+    .username-button::before {
+      content: "Welcome, ";
+      font-weight: normal;
+    }
+  }
+}
+
+.no-border {
+    border: none;
+}
+
+button {
+  background-color: black; /* Белый фон кнопки */
+  color: white; /* Черный текст */
+  border: 2px solid white; /* Тонкая черная рамка */
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+
+.sidebar {
+  z-index: 12;
+  position: fixed;
+  top: 72px;
+  left: -102%;
+  width: 100%;
+  height: 100dvh;
+  background-color: black;
+  border-right: 2px solid white;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s;
+
+  button {
+    &:first-child {
+      border-top: 1px solid white;
+    }
+    border: none;
+    border-bottom: 1px solid white;
+    border-radius: 0px;
+    background-color: black;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-size: 20px;
+  }
 }
 
 .mobile {
-    display: none;
+  display: none;
 }
 
-.sidebar {
-    position: fixed;
-    top: 56px;
-    left: -100%;
-    z-index: 10;
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    height: 100dvh;
-    background-color: #1e1e1e;
-    transition: .3s;
-    button {
-        height: 50px;
-        text-align: start;
-        border: none;
-        background-color: transparent;
-        color: #ddd;
-        &:hover {
-            background-color: #2e2e2e;
-        }
-        // Separators between buttons
-        &:not(:last-of-type) {
-            border-bottom: 1px solid #aaa;
-        }
-    }
-}
-
-@media (width < 1000px) {
-    .navbar {
-        .navbar-container {
-            width: 100%;
-        }
-    }
-}
-
-@media (width < 670px) {
-    .mobile {
-        display: block;
-    }
-    .desktop {
-        display: none;
+@media (width > 670px) {
+    button:hover {
+        background-color: white; /* Черный фон при наведении */
+        color: black; /* Белый текст при наведении */
     }
     .sidebar {
-        display: flex;
+        display: none;
     }
 }
+@media (width < 1000px) {
+  .navbar-container {
+    width: 100%;
+  }
+}
+@media (width < 670px) {
+
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: flex;
+  }
+
+}
+  

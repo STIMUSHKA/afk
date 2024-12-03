@@ -93,6 +93,10 @@ export class HeroList {
     return this.heroes.find(hero => hero.id === heroId);
   }
 
+  public getHeroByDocId(heroDocId: string): Hero | undefined {
+    return this.heroes.find(hero => hero.documentId == heroDocId);
+  }
+
   // Метод для получения количества героев
   public count(): number {
     return this.heroes.length;

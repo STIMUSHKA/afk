@@ -1,14 +1,15 @@
 <nav class="navbar desktop">
   <div class="navbar-container">
     <div class="menu-items">
-      <button (click)="navigateToHome()">main</button>
-      <button (click)="navigateToHeroes()">heroes</button>
-      <button (click)="navigateToPacks()">my formations</button>
-      <button (click)="navigateToMyHeroes()">my heroes</button>
+      <button class="no-border" (click)="navigateToHome()">Main</button>
+      <button class="no-border" (click)="navigateToHeroes()">Heroes</button>
+      <button class="no-border" (click)="navigateToMyFormations()">My Formations</button>
+      <button class="no-border" (click)="navigateToFormationCreation()">Create formation</button>
+      <button class="no-border" (click)="navigateToMyHeroes()">My Heroes</button>
     </div>
     <div class="menu-items">
-      <button class="username-button" (click)="navigateToProfile()">{{userName}}</button>
-      <button *ngIf="loggedIn" (click)="logout()">Log out</button>
+      <button class="username-button no-border" (click)="navigateToProfile()">{{userName}}</button>
+      <button *ngIf="loggedIn" (click)="logout()">Log Out</button>
     </div>
   </div>
 </nav>
@@ -16,20 +17,21 @@
 <nav class="navbar mobile">
   <div class="navbar-container">
     <div class="menu-items">
-      <button class="burger" (click)="toggleBurger()">
+      <button class="burger" [ngClass]="{ 'burger-prikol': isSidebarOpen }" (click)="toggleBurger()">
         {{ isSidebarOpen ? '✖' : '☰' }}
       </button>
     </div>
     <div class="menu-items">
       <button class="username-button" (click)="navigateToProfile()">{{userName}}</button>
-      <button *ngIf="loggedIn" (click)="logout()">Log out</button>
+      <button *ngIf="loggedIn" (click)="logout()">Log Out</button>
     </div>
   </div>
 </nav>
 
-<div class="sidebar" #sidebar id="sidebar">
-      <button (click)="navigateToHome()">main</button>
-      <button (click)="navigateToHeroes()">heroes</button>
-      <button (click)="navigateToPacks()">my formations</button>
-      <button (click)="navigateToMyHeroes()">my heroes</button>
+<div class="sidebar" #sidebar id="sidebar" unselectable="on">
+  <button (click)="navigateToHome()">Main</button>
+  <button (click)="navigateToHeroes()">Heroes</button>
+  <button (click)="navigateToMyFormations()">My Formations</button>
+  <button (click)="navigateToFormationCreation()">Create formation</button>
+  <button (click)="navigateToMyHeroes()">My Heroes</button>
 </div>

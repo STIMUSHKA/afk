@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>Choose hero</h2>
+<mat-dialog-content>
+    <div class="container">
+      <app-heroes [search]="true" [userMode]="false" (heroSelected)="onHeroSelected($event)"></app-heroes>
+    </div>
+</mat-dialog-content>

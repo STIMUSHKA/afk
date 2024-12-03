@@ -1,0 +1,36 @@
+.container {
+    width: 1200px;
+    margin: auto;
+    .formations {
+        display: flex;
+        flex-direction: column;
+        .multiple-formation {
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 5px;
+            margin-bottom: 10px;
+            .formation {
+                border: 1px solid black;
+                border-radius: 5px;
+                .formation-line {
+                    display: flex;
+                    flex-direction: row;
+                    border-bottom: 1px solid black;
+                    &:last-child {
+                        border: none;
+                    }
+                    .hero {
+                        width: 50px;
+                        height: 50px;
+
+                        .icon {
+                            width: 50px;
+                            height: 50px;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_formation_heroes",
+  "info": {
+    "displayName": "hero",
+    "icon": "alien"
+  },
+  "options": {},
+  "attributes": {
+    "hero": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero.hero"
+    }
+  }
+}

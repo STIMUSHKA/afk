@@ -1,0 +1,30 @@
+<h2>Create formation</h2>
+<div class="formation-creation">
+    <input type="text" placeholder="Formation name" [(ngModel)]="formationName">
+    <div class="formation" *ngFor="let formation of formations; let f = index">
+        <div class="formation-place" *ngFor="let place of formation; let p = index">
+            <button class="plus-button" (click)="openHeroSelectionDialog(f,p)">
+                <img src="assets/img/plus.png" alt="">
+            </button>
+            <div *ngIf="place.length > 0" cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event, f, p)">
+                @for (hero of place; track hero.id) {
+                  <div class="example-box" cdkDrag>
+                    <img src="{{ baseUrl + hero.iconUrl }}" alt="" class="icon"></div>
+                  }
+            </div>
+            <div *ngIf="place.length == 0" class="no-items">
+                <----Click + to add a hero to formation
+            </div> 
+        </div>
+    </div>
+
+    <div class="control-buttons">
+        <button class="plus-button main-button" (click)="addNewFormation()">
+            <img src="assets/img/plus.png" alt="">
+            <span class="no-items">
+                Add new team to the formation
+            </span>
+        </button>
+        <button class="main-button" (click)="createFormation()">Save formation</button>
+    </div>
+</div>
