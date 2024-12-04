@@ -1,22 +1,32 @@
-
 .icon {
   width: 100px;
-  overflow: hidden;
-}
-.example-box {
   overflow: hidden;
 }
 .formation-creation {
   width: 60%;
   margin: auto;
+  input {
+    margin-bottom: 10px;
+    outline: none;
+    &:focus {
+      border: 2px solid black;
+    }
+  }
+
   .plus-button {
-    width: 300px;
-    height: 60px;
-    border-radius: 10px;
+    min-width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border: 2px solid black;
+    border-radius: 4px;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    transition: 0.15s ease-in-out;
+    cursor: pointer;
+    img {
+      width: 50px;
+      margin: 0 auto;
+    }
 
     &:hover {
       img {
@@ -24,43 +34,65 @@
       }
       background-color: black;
     }
+  }
+
+  #create-button {
+    border-radius: 4px;
+    height: 60px;
+    width: 200px;
+    padding: 0px 10px;
     img {
-      width: 50px;
+      width: 45px;
+      margin-right: 10px;
     }
   }
 
   .formation {
-    border: solid 1px #ccc;
-    border-radius: 12px;
     padding: 5px;
+
+    border: solid 1px #ccc;
+    // Only formation borders
+    &:first-of-type:nth-last-of-type(2) {
+      border-radius: 9px;
+    }
+    // First formation borders
+    &:first-of-type:not(:nth-last-of-type(2)) {
+      border-radius: 9px 9px 0 0;
+    }
+    // In between formation borders
+    &:not(:first-of-type):not(:nth-last-of-type(2)) {
+      border-radius: 0;
+      border-top: none;
+    }
+    // Last formation borders
+    &:not(:first-of-type):nth-last-of-type(2) {
+      border-radius: 0 0 9px 9px;
+      border-top: none;
+    }
 
     .formation-place {
       display: flex;
       flex-direction: row;
-  
-      .plus-button {
-        width: 100px;
-        height: 100px;
-        border-radius: 10px;
-        img {
-            width: 100%;
-        }
+      max-height: 100px;
+      &:not(:last-of-type) {
+        padding-bottom: 5px;
       }
+  
       .example-list {
         width: min-content;
-        max-width: 100%;
+        max-width: calc(100% - 105px);
         border: solid 1px #ccc;
-        min-height: 60px;
         display: flex;
         flex-direction: row;
         background: white;
         border-radius: 4px;
         overflow: hidden;
+        margin-left: 5px;
       }
       
       .example-box {
+        min-width: 100px;
         padding: 0px 0px;
-        border-right: solid 1px #ccc;
         color: rgba(0, 0, 0, 0.87);
         display: flex;
         flex-direction: row;
@@ -73,6 +105,9 @@
         flex-grow: 1;
         flex-basis: 0;
         overflow: hidden;
+        &:not(:last-of-type) {
+          border-right: solid 1px #ccc;
+        }
       }
       .cdk-drag-preview {
         box-sizing: border-box;
@@ -90,19 +125,14 @@
         transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
       }
       
-      .example-box:last-child {
-        border: none;
-      }
-      
       .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
         transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
       }
       
       .no-items {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+        display: flex;
+        align-items: center;
+        margin-left: 5px;
       }
     }
   }
@@ -111,8 +141,37 @@
     margin-top: 10px;
     margin-bottom: 100px;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+  }
+}
+
+@media (width < 1000px) {
+  .formation-creation {
+    width: 95vw;
+  }
+}
+
+@media (width < 670px) {
+  .formation-place {
+    max-height: 50px !important;
+    img {
+      width: 50px;
+    }
+    .example-list {
+      max-height: 50px;
+      max-width: calc(100% - 60px) !important;
+      .example-box {
+        min-width: 50px !important;
+        width: 50px;
+      }
+    }
+    .plus-button {
+      min-width: 50px !important; 
+      max-width: 50px;
+      max-height: 50px;
+      img {
+        width: 30px;
+      }
+    }
   }
 }
