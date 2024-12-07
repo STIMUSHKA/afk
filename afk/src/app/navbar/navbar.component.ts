@@ -70,5 +70,11 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.authService.logout(); // Выйти из аккаунта
     this.router.navigate(['/login']); // Перейти на страницу логина
+    this.userName = "";
+    this.loggedIn = false;
+  }
+
+  login() {
+    this.router.navigate(['/login']);
   }
 }
