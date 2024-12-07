@@ -15,5 +15,5 @@ export const routes: Routes = [
     { path: 'my-heroes', component: MyHeroesComponent },
     { path: 'formation-creation', component: FormationCreationComponent },
     { path: 'my-formations', component: MyFormationComponent },
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '', redirectTo: '/heroes', pathMatch: 'full' },
 ];

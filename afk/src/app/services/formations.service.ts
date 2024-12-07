@@ -49,4 +49,14 @@ export class FormationsService {
      )
    );
   }
+
+  deleteFormation(id: number) {
+    const token = this._authService.getToken()
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}` // Добавляем токен в заголовок
+    });
+
+    return this.http.delete<any>(this.formatiopnApis + '/' + id, { headers });
+  }
 }

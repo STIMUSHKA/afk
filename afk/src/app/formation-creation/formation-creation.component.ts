@@ -25,6 +25,7 @@ export class FormationCreationComponent {
     private _formationService: FormationsService,
   ) {}  
 
+
   openHeroSelectionDialog(f: number, p: number): void {
     console.log('openHeroSelectionDialog');
     const dialogRef = this.dialog.open(HeroAddToPartitionDialog, {
@@ -32,9 +33,19 @@ export class FormationCreationComponent {
       width: '920px',
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (!this.formations[f][p].some(existingResult => existingResult === result)) {
-        this.formations[f][p].push(result);
+      if (result) {
+        if (this.formations && this.formations[f] && this.formations[f][p]) {
+          if (!this.formations[f][p].some(existingResult => existingResult === result)) {
+            this.formations[f][p].push(result);
+          }
+        } else {
+          console.error('Invalid formation indices');
+        }
+      } else {
+        console.warn('Dialog closed without selecting a hero');
       }
+    }, error => {
+      console.error('Error closing dialog:', error);
     });
   }
 
@@ -47,10 +58,42 @@ export class FormationCreationComponent {
   }
 
   createFormation(): void {
+    if (!this.formationName || this.formationName.trim() === '') {
+      console.error('Formation name is empty');
+      return;
+    }
+    if (!this.formations || this.formations.length === 0) {
+      console.error('Formation is empty');
+      return;
+    }
+    let hasEmptyPlace = false;
+    this.formations.forEach((formation: any) => {
+      formation.forEach((place: any) => {
+        if (place.length === 0) {
+          hasEmptyPlace = true;
+          return;
+        }
+      });
+    });
+    if (hasEmptyPlace) {
+      console.error('Formation is not full');
+      return;
+    }
     this._formationService.createFormation(this.formations, this.formationName).subscribe(
       (response) => {
         console.log(response);
+        console.log(this.formations)
+        this.formations = [
+          [
+            [],[],[],[],[]
+          ]
+        ]
+        this.formationName = ''
+      },
+      (error) => {
+        console.error('Error creating formation:', error);
       }
     );
   }
+
 }
