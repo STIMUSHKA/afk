@@ -1,7 +1,14 @@
 <div class="container">
     <div class="formations">
         <div class="multiple-formation" *ngFor="let formation of myFormations">
-            {{formation.name}}
+            <div class="formation-control">
+                <span class="formation-name">
+                    {{formation.name}}
+                </span>
+                <button class="formation-delete" (click)="deleteFormation(formation)">
+                    Delete
+                </button>
+            </div>
             <div class="formation" *ngFor="let brick of formation.formation; let p = index">
                 <div class="formation-line" *ngFor="let place of brick">
                     @for (hero of place; track hero.id) {
