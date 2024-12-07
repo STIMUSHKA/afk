@@ -68,11 +68,11 @@ button {
     }
 }
 
-.mat-mdc-snackbar-surface {
-  background-color: $primary !important;
-  color: $text-inv !important;
-  margin-right: 0 !important;
-  box-shadow: none !important;
-  border-radius: 4px !important;
-  transition: 0.15s ease-in-out !important;
+.success-snack {
+  background-color: $primary;
+  color: $text-inv;
+  margin-right: 0;
+  box-shadow: none;
+  border-radius: 4px;
+  transition: 0.15s ease-in-out;
 }

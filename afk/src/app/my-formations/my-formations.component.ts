@@ -4,14 +4,8 @@ import { FormationsService } from '../services/formations.service';
 import { API_BASE_URL } from '../shared/constants';
 import { CommonModule } from '@angular/common';
 import { HeroService } from '../services/heroes.service';
-import { CdkDropListGroup } from '@angular/cdk/drag-drop';
-import {
-  MatSnackBar,
-  MatSnackBarAction,
-  MatSnackBarActions,
-  MatSnackBarLabel,
-  MatSnackBarRef,
-} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 @Component({
   selector: 'app-my-formation',
   imports: [FormationCreationComponent, CommonModule],
@@ -53,9 +47,11 @@ export class MyFormationComponent implements OnInit {
   }
 
 
-  openSnackBar() {
-    this._snackBar.openFromComponent(PizzaPartyAnnotatedComponent, {
+  openSnackBar(message: string, customClass: string): void {
+    this._snackBar.openFromComponent(SnackBarComponent, {
       duration: this.durationInSeconds * 1000,
+      data: { message },
+      panelClass: customClass,
     });
   }
 
@@ -68,29 +64,11 @@ export class MyFormationComponent implements OnInit {
           this.myFormations.splice(index, 1);
         }
         console.log('Formation deleted:', response);
-        this.openSnackBar()
+        this.openSnackBar("Successfully deleted", "success-snack");
       },
       error: (err) => {
         console.error('Error deleting formation:', err);
       }
     });
   }
-  
-  
-  
-  
-}
-@Component({
-  selector: 'snack-bar-annotated-component-example-snack',
-  template: '<div class="popup">Successfully deleted</div>',
-  styles: `
-    :host {
-      display: flex;
-    }
-
-  `,
-  imports: [MatSnackBarLabel, MatSnackBarActions, MatSnackBarAction],
-})
-export class PizzaPartyAnnotatedComponent {
-  snackBarRef = inject(MatSnackBarRef);
 }
