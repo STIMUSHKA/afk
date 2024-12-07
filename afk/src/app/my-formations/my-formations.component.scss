@@ -1,28 +1,77 @@
+@import "../../variables.scss";
+
 .container {
-    width: 1200px;
+    width: 65vw;
     margin: auto;
     .formations {
         display: flex;
         flex-direction: column;
+        margin-top: 10px;
         .multiple-formation {
-            border: 2px solid black;
-            border-radius: 10px;
+            border: 2px solid $primary;
+            border-radius: 9px;
             padding: 5px;
             margin-bottom: 10px;
+            
+            
+            .formation-control {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 5px;
+                
+                .formation-name {
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+                .formation-delete {
+                    height: 30px;
+                    background-color: transparent;
+                    color: $danger;
+                    border: 2px solid $danger;
+                    border-radius: 4px;
+                    transition: 0.15s ease-in-out;
+
+                    &:hover {
+                        background-color: $danger;
+                        color: $text-inv;
+                    }
+                }
+            }
+
             .formation {
-                border: 1px solid black;
-                border-radius: 5px;
+                border: 1px solid $gray;
+                border-radius: 4px;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                &:nth-of-type(2):not(:last-of-type) {
+                    border-radius: 4px 4px 0 0;
+                    border-bottom-width: 2px;
+                }
+                &:last-of-type:not(:nth-of-type(2)) {
+                    border-radius: 0 0 4px 4px;
+                    border-top: none;
+                }
+                &:not(:last-of-type):not(:nth-of-type(2)) {
+                    border-radius: 0;
+                    border-top: none;
+                    border-bottom-width: 2px;
+                }
                 .formation-line {
                     display: flex;
                     flex-direction: row;
-                    border-bottom: 1px solid black;
-                    &:last-child {
-                        border: none;
+                    width: min-content;
+                    &:not(:last-of-type) {
+                        border-bottom: 1px solid $gray;
                     }
                     .hero {
                         width: 50px;
                         height: 50px;
-
+                        z-index: -1;
+                        &:not(:last-of-type) {
+                            border-right: 1px solid $gray;
+                        }
+                        
                         .icon {
                             width: 50px;
                             height: 50px;
@@ -32,5 +81,11 @@
             }
         }
         
+    }
+}
+
+@media (width < 1000px) {
+    .container {
+        width: 95vw;
     }
 }

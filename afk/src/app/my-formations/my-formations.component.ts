@@ -41,6 +41,11 @@ export class MyFormationComponent implements OnInit {
       });
     });
   }
+
+  deleteFormation(formation: any): void {
+    // TODO: Implement formation deletion
+    console.log("deleted", formation)
+  }
   
   
 }
