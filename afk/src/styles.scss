@@ -1,10 +1,10 @@
-
+@import "./variables.scss";
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 
 body {
   margin: 0; 
-  background-color: #fff;
+  background-color: $background;
   &::-webkit-scrollbar {
     width: 0px; /* Ширина скроллбара */
   }
@@ -30,7 +30,7 @@ label {
 input {
   margin-bottom: 15px; /* Отступ между полями ввода */
   padding: 10px; /* Внутренний отступ */
-  border: 1px solid #ccc; /* Цвет рамки */
+  border: 1px solid $gray; /* Цвет рамки */
   border-radius: 4px; /* Закругленные углы */
   width: calc(100% - 20px);
 }
@@ -42,17 +42,17 @@ button {
 }
 
 .main-button {
-  background-color: white; /* Белый фон кнопки */
-  color: black; /* Черный текст */
-  border: 2px solid black; /* Тонкая черная рамка */
+  background-color: $background; /* Белый фон кнопки */
+  color: $text; /* Черный текст */
+  border: 2px solid $primary; /* Тонкая черная рамка */
   border-radius: 4px;
   padding: 10px 15px;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
 
   &:hover {
-    background-color: black; /* Черный фон при наведении */
-    color: white; /* Белый текст при наведении */
+    background-color: $primary; /* Черный фон при наведении */
+    color: $text-inv; /* Белый текст при наведении */
   }
 }
 
