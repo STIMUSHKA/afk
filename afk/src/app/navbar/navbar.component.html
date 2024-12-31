@@ -8,8 +8,10 @@
       <button class="no-border" (click)="navigateToMyHeroes()">My Heroes</button>
     </div>
     <div class="menu-items">
-      <button class="username-button no-border" (click)="navigateToProfile()">{{userName}}</button>
+      <button *ngIf="loggedIn" class="username-button no-border" (click)="navigateToProfile()"><span>Welcome, </span>{{userName}}</button>
       <button *ngIf="loggedIn" (click)="logout()">Log Out</button>
+      <button *ngIf="!loggedIn" (click)="login()">Log In</button>
+
     </div>
   </div>
 </nav>
@@ -22,8 +24,10 @@
       </button>
     </div>
     <div class="menu-items">
-      <button class="username-button" (click)="navigateToProfile()">{{userName}}</button>
+      <button *ngIf="loggedIn" class="username-button" (click)="navigateToProfile()"><span>Welcome, </span>{{userName}}</button>
       <button *ngIf="loggedIn" (click)="logout()">Log Out</button>
+      <button *ngIf="!loggedIn" (click)="login()">Log In</button>
+
     </div>
   </div>
 </nav>

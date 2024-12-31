@@ -42,6 +42,50 @@ export default factories.createCoreController('api::formation-json.formation-jso
       return ctx.internalServerError('An error occurred while creating formation-json.formation-json');
     }
   },
+  async delete(ctx) {
+    try {
+      // Получение токена
+      const token = ctx.request.header.authorization?.split(' ')[1];
+      if (!token) {
+        return ctx.badRequest('Authorization token is missing');
+      }
+  
+      // Проверка токена и получение user_id
+      const decodedToken = await strapi.plugins['users-permissions'].services.jwt.verify(token);
+      const userId = decodedToken.id;
+      if (!userId) {
+        return ctx.badRequest('User ID not found in token');
+      }
+  
+      // Получение formationId из параметров маршрута
+      const formationId = ctx.request.url.split('/')[3]
+      if (!formationId) {
+        return ctx.badRequest('Formation ID is missing');
+      }
+  
+      // Проверка существования записи
+      const formation = await strapi.db.query('api::formation-json.formation-json').findOne({
+        where: {
+          document_id: formationId,
+          users_permissions_user: userId,
+        },
+      });
+  
+      if (!formation) {
+        return ctx.notFound('Formation not found or you do not have permission to delete it');
+      }
+  
+      // Удаление записи
+      await strapi.db.query('api::formation-json.formation-json').delete({
+        where: { id: formation.id },
+      });
+  
+      return ctx.send({ message: 'Formation successfully deleted' });
+    } catch (err) {
+      console.error('Error deleting formation-json:', err);
+      return ctx.internalServerError('An error occurred while deleting the formation-json');
+    }
+  },  
 
   async myFormations(ctx) {
   
@@ -62,6 +106,8 @@ export default factories.createCoreController('api::formation-json.formation-jso
           'users_permissions_user': user.id, // Фильтрация по ID пользователя
         },
       });
+
+
   
       return formations;
     } catch (err) {
